@@ -23,13 +23,12 @@ jobs:
 
   - script: |
       python -m pip install --upgrade pip
-      pip install -r requirements.txt
+      pip install -r ./app/requirements.txt
     displayName: 'Install Dependencies'
     workingDirectory: $(System.DefaultWorkingDirectory)
 
-
   - script: |
-      python -m pytest
+      python -m pytest ./app
     displayName: 'Run Tests'
     workingDirectory: $(System.DefaultWorkingDirectory)
 
@@ -49,12 +48,12 @@ jobs:
 
   - script: |
       python -m pip install --upgrade pip
-      pip install -r requirements.txt
+      pip install -r ./app/requirements.txt
     displayName: 'Install Dependencies'
-    workingDirectory: ./app
+    workingDirectory: $(System.DefaultWorkingDirectory)
 
   - script: |
       # Replace these commands with your actual deployment process
       echo Deploying the application...
     displayName: 'Deploy Application'
-    workingDirectory: ./app
+    workingDirectory: $(System.DefaultWorkingDirectory)/app
